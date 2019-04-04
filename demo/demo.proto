@@ -1,0 +1,27 @@
+syntax = "proto3";
+package demo;
+
+option optimize_for = LITE_RUNTIME;
+
+// The demo service definition.
+service demo {
+    // 单次调用
+    rpc SayHello (Request) returns (Reply) {}
+    // 客户端流
+    rpc SayHelloCliStream (stream Request) returns (Reply) {}
+    // 服务端流
+    rpc SayHelloServStream (Request) returns (stream Reply) {}
+    //双向流
+    rpc SayHelloBidiStream (stream Request) returns (stream Reply) {}
+    
+  }
+  
+  // The request message containing the user's name.
+  message Request {
+    string name = 1;
+  }
+  
+  // The response message containing the greetings
+  message Reply {
+    string message = 1;
+  }
