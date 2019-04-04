@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"io"
-	"log"
 	"net"
 	"strconv"
 	"time"
@@ -108,7 +107,7 @@ func main() {
 
 	l, err := net.Listen("tcp", ":6000")
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		glog.Fatalf("failed to listen: %v", err)
 	}
 
 	glog.Info("Listening on tcp://localhost:6000")
@@ -123,7 +122,7 @@ func grpcClientTest() {
 	time.Sleep(time.Second)
 	conn, err := grpc.Dial("localhost:6000", grpc.WithInsecure())
 	if err != nil {
-		log.Fatalf("failed to connect: %s", err)
+		glog.Fatalf("failed to connect: %s", err)
 	}
 	defer conn.Close()
 
@@ -166,16 +165,16 @@ func grpcClientTest() {
 			req.Name = req.Name + strconv.Itoa(i) + ","
 			err = cliStream.Send(req)
 			if err != nil {
-				glog.Info("cli stream send err:", err)
+				glog.Info("cli SayHelloCliStream send err:", err)
 			}
 		}
 		reply, err := cliStream.CloseAndRecv()
 		if err != nil {
-			glog.Info("cli CloseAndRecv err:", err)
+			glog.Info("cli SayHelloCliStream CloseAndRecv err:", err, reply)
 			return
 		}
 
-		glog.Info("cli CloseAndRecv result:", reply)
+		glog.Info("cli SayHelloCliStream result:", reply)
 	}()
 
 	go func() {
@@ -191,11 +190,11 @@ func grpcClientTest() {
 		for {
 			reply, err := serStream.Recv()
 			if err == io.EOF {
-				glog.Info("cli SayHelloServStream end")
+				glog.Info("cli SayHelloServStream end", reply)
 				return
 			}
 			if err != nil {
-				glog.Info("cli SayHelloServStream err:", err)
+				glog.Info("cli SayHelloServStream err:", err, reply)
 			}
 
 			glog.Info("cli SayHelloServStream got:", reply)
@@ -232,11 +231,11 @@ func grpcClientTest() {
 		for {
 			reply, err := biStream.Recv()
 			if err == io.EOF {
-				glog.Info("cli SayHelloBidiStream got end")
+				glog.Info("cli SayHelloBidiStream got end", reply)
 				return
 			}
 			if err != nil {
-				glog.Info("cli SayHelloBidiStream recv err:", err)
+				glog.Info("cli SayHelloBidiStream recv err:", err, reply)
 				return
 			}
 
