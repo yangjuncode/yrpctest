@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"time"
 
-	"grpctest/demo"
+	"github.com/yangjuncode/yrpc-test/demo"
 
 	"github.com/golang/glog"
 	"google.golang.org/grpc"

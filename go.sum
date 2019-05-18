@@ -18,6 +18,7 @@ github.com/yangjuncode/grpc-go v1.19.3 h1:GxbmlKyb4ZH/oFawTUoEzS30DzjzOhl6dxRbEr
 github.com/yangjuncode/grpc-go v1.19.3/go.mod h1:chYK+tFQF0nDUGJgXMSgLCQk3phJEuONr2DCgLDdAQM=
 github.com/yangjuncode/grpc-go v1.19.4 h1:9ngRqxQBHt4PlaQVSv061wUy85Nu8iu3Db1lGePiNFs=
 github.com/yangjuncode/grpc-go v1.19.4/go.mod h1:chYK+tFQF0nDUGJgXMSgLCQk3phJEuONr2DCgLDdAQM=
+github.com/yangjuncode/grpc-go v1.20.2 h1:KntkdAA+0PBNEqEChA1yA9O45q8Ci5LAPBY1O8Ava4M=
 github.com/yangjuncode/grpc-go v1.20.2/go.mod h1:oYelfM1adQP15Ek0mdvEgi9Df8B9CZIaU1084ijfRaM=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/lint v0.0.0-20190313153728-d0100b6bd8b3/go.mod h1:6SW0HCj/g11FgYtHlgUYUwCkIfeOF89ocIRzGO/8vkc=

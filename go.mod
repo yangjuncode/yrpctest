@@ -1,4 +1,4 @@
-module grpctest
+module github.com/yangjuncode/yrpc-test
 
 go 1.12
 
