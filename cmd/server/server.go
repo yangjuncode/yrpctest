@@ -13,6 +13,7 @@ import (
 	"github.com/golang/glog"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/metadata"
+	"google.golang.org/grpc/peer"
 )
 
 type demoServer struct {
@@ -21,6 +22,8 @@ type demoServer struct {
 // 单次调用
 func (s *demoServer) SayHello(ctx context.Context, req *demo.Request) (*demo.Reply, error) {
 	md, _ := metadata.FromIncomingContext(ctx)
+	p, _ := peer.FromContext(ctx)
+	glog.Info("sayhello peer", p)
 	glog.Info("ser SayHello got call:", req, " meta:", md)
 
 	reply := &demo.Reply{
@@ -34,6 +37,11 @@ func (s *demoServer) SayHello(ctx context.Context, req *demo.Request) (*demo.Rep
 func (s *demoServer) SayHelloCliStream(cliStream demo.Demo_SayHelloCliStreamServer) error {
 	md, _ := metadata.FromIncomingContext(cliStream.Context())
 	glog.Info("SayHelloCliStream got call meta:", md)
+
+	glog.Info("clistream context:", cliStream.Context())
+
+	p, _ := peer.FromContext(cliStream.Context())
+	glog.Info("clistream peer", p)
 
 	for {
 		req, err := cliStream.Recv()
