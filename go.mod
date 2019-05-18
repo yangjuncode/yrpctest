@@ -2,7 +2,7 @@ module grpctest
 
 go 1.12
 
-replace google.golang.org/grpc => github.com/yangjuncode/grpc-go v1.19.3
+replace google.golang.org/grpc => github.com/yangjuncode/grpc-go v1.20.2
 
 require (
 	github.com/gogo/protobuf v1.2.0
