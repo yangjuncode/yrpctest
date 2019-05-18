@@ -120,13 +120,13 @@ func main() {
 
 	glog.Info("Listening on tcp://localhost:6000")
 
-	go grpcClientTest()
-
-	go func() {
-		time.Sleep(time.Second * 10)
-		glog.Info("forward test begin")
-		forwardGrpcClientTest()
-	}()
+	//go grpcClientTest()
+	//
+	//go func() {
+	//	time.Sleep(time.Second * 10)
+	//	glog.Info("forward test begin")
+	//	forwardGrpcClientTest()
+	//}()
 
 	grpcServer.Serve(l)
 
